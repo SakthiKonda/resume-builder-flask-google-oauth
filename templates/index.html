@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SkillVault - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>SkillVault</header>
+    <div class="container" style="text-align:center;">
+        <h2>Build your resume & master job-specific skills</h2>
+        <p>Login to create a standout resume and upskill yourself for your dream role.</p>
+        <a href="{{ url_for('google.login') }}">
+            <button>Login with Google</button>
+        </a>
+    </div>
+</body>
+</html>
