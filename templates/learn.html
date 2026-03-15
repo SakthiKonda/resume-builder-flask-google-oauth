@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn Skills – SkillVault</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .section {
+            margin-bottom: 2rem;
+        }
+        .skill-tag {
+            display: inline-block;
+            background-color: #eef6fb;
+            padding: 0.4rem 0.8rem;
+            margin: 0.3rem;
+            border-radius: 6px;
+            border: 1px solid #cce4f6;
+            color: #0077cc;
+        }
+        .missing {
+            background-color: #fff1f1;
+            color: #cc0000;
+            border-color: #ffcccc;
+        }
+        .resource-link {
+            display: block;
+            margin: 0.2rem 0 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>Skill Suggestions</header>
+    <div class="container">
+        <div class="section">
+            <h2>Job Role: {{ job_role }}</h2>
+            <p>This role typically requires the following skills:</p>
+            <div>
+                {% for skill in required_skills %}
+                    <span class="skill-tag {% if skill.lower() not in user_skills %}missing{% endif %}">
+                        {{ skill }}
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Your Skills</h2>
+            <div>
+                {% if user_skills %}
+                    {% for skill in user_skills %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                {% else %}
+                    <p>No skills listed yet. Please update your resume.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if missing_skills %}
+            <div class="section">
+                <h2>Skills to Learn</h2>
+                <p>You're missing {{ missing_skills|length }} important skill{{ 's' if missing_skills|length > 1 else '' }} for this role. Start learning below:</p>
+                <ul>
+                    {% for skill in missing_skills %}
+                        <li>
+                            <strong>{{ skill }}</strong> –
+                            <a class="resource-link" href="{{ resources[skill] }}" target="_blank">
+                                Learn {{ skill }} here →
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <div class="section">
+                <h2>Congratulations! 🎉</h2>
+                <p>You already have all the required skills for the {{ job_role }} role.</p>
+            </div>
+        {% endif %}
+
+        <a href="{{ url_for('export') }}">
+            <button>→ Go to Resume Export</button>
+        </a>
+    </div>
+</body>
+</html>
