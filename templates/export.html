@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Export Resume – SkillVault</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .export {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>Your Resume</header>
+    <div class="container export">
+        <h1>{{ data.name }}</h1>
+        <h3>{{ data.title }}</h3>
+        <p><strong>Email:</strong> {{ session.user_email }}</p>
+        <p><strong>GitHub:</strong> {{ data.github }}</p>
+        <p><strong>LinkedIn:</strong> {{ data.linkedin }}</p>
+
+        <h2>Summary</h2>
+        <p>{{ data.summary }}</p>
+
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in data.skills.split(",") %}
+                <li>{{ skill.strip() }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Experience</h2>
+        <p>{{ data.experience }}</p>
+
+        <h2>Projects</h2>
+        <p>{{ data.projects }}</p>
+
+        <h2>Education</h2>
+        <p>{{ data.education }}</p>
+
+        <h2>Certifications</h2>
+        <p>{{ data.certifications }}</p>
+
+        <h2>Target Role</h2>
+        <p>{{ data.job_role }}</p>
+
+        <a href="{{ url_for('export_pdf') }}">
+            <button>Download as PDF</button>
+        </a>
+    </div>
+</body>
+</html>
