@@ -1,0 +1,22 @@
+{
+  "Data Analyst": {
+    "skills": ["Excel", "SQL", "Python", "Pandas", "Tableau"],
+    "resources": {
+      "Excel": "https://www.w3schools.com/excel/",
+      "SQL": "https://www.w3schools.com/sql/",
+      "Python": "https://www.learnpython.org/",
+      "Pandas": "https://pandas.pydata.org/docs/",
+      "Tableau": "https://www.tableau.com/learn/training"
+    }
+  },
+  "Web Developer": {
+    "skills": ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+    "resources": {
+      "HTML": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+      "CSS": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+      "JavaScript": "https://javascript.info/",
+      "React": "https://reactjs.org/docs/getting-started.html",
+      "Node.js": "https://nodejs.dev/en/learn/"
+    }
+  }
+}
